@@ -1,6 +1,7 @@
 <a class="list-group-item clearfix"
    [ngStyle]="{cursor: 'pointer'}"
-   (click)="onSelect()">
+   [routerLink]="id"
+ >
   <div class="pull-left">
     <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
     <p class="list-group-item-next">{{ recipe.description }}</p>
