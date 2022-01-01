@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { ShoppingListService } from 'src/app/shopping-list/shopping-list.service';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
@@ -22,9 +23,10 @@ export class RecipeDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.route.data.pipe(tap(console.log)).subscribe(data => this.recipe = data.recipe);
     this.route.params.subscribe(params => {
       this.id = params.id;
-      this.recipe = this.recipeService.getRecipe(params.id);
+      // this.recipe = this.recipeService.getRecipe(params.id);
     });
   }
 
